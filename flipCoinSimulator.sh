@@ -21,8 +21,6 @@ echo "Tail Count: $tailCount";
 
 newHeadResult=0
 newTailResult=0
-headCount=20
-tailCount=20
 
 if (( $headCount > $tailCount ))
 then
