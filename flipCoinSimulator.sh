@@ -19,6 +19,9 @@ done
 echo "Head Count: $headCount";
 echo "Tail Count: $tailCount";
 
+newHeadResult=0
+newTailResult=0
+
 if (( $headCount > $tailCount ))
 then
    result1=$(($headCount-$tailCount))
@@ -28,6 +31,19 @@ then
    result2=$(($tailCount-$headCount))
    echo "Tail count won by: $result2"
 else
-   echo "TIE";
+   echo "!!! TIE !!!";
+   while (( $newHeadResult < 3 && $newTailResult < 3 ))
+   do
+   	newCoinValue=$(($RANDOM%2))
+   	if (( $newCoinValue == 1 ))
+        then
+           ((headCount++))
+   	   newHeadResult=$(($headCount-$tailCount))
+        else
+           ((tailCount++))
+	   newTailResult=$(($tailCount-$headCount))
+        fi
+   done
+   echo "Head Count after TIE: $headCount";
+   echo "Tail Count after TIE: $tailCount";
 fi
-
